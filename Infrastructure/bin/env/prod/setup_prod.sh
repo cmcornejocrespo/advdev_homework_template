@@ -17,3 +17,7 @@ echo "Setting up Parks Production Environment in project ${GUID}-parks-prod"
 oc project ${GUID}-parks-prod
 
 oc new-app -f ../templates/parks-prod.yaml
+#Set up the correct permissions for Jenkins to manipulate objects in the production project.
+oc policy add-role-to-user edit system:serviceaccount:${GUID}-jenkins:jenkins
+#Set up the correct permissions for the production project to deploy images from the development project
+oc policy add-role-to-group system:image-puller system:serviceaccounts:${GUID}-parks-prod -n ${GUID}-parks-dev

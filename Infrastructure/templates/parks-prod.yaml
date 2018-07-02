@@ -1,15 +1,10 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: jenkins-configuration-template
+  template: mongodb-template
 metadata:
   name: mongodb-configuration
 message: "This template is used to configure MongoDB pod template for prod"
-parameters:
-- description: The name assigned to reference Jenkins objects defined in this template.
-  displayName: Name
-  name: JENKINS_SERVICE_NAME
-  value: jenkins
 objects:
 - kind: Service
   apiVersion: v1
